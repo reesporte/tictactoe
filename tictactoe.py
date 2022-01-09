@@ -18,7 +18,6 @@ def on_mouse_press(x, y, button, modifiers):
 def on_mouse_release(x, y, button, modifiers):
     if button == mouse.LEFT:
         if board.player_plays(x, y):
-            print(board._get_quad(x, y))
             board.computer_plays()
 
 
