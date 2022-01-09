@@ -289,6 +289,7 @@ class Board:
 
         blocks = []
         forks = []
+        cpu_forks = []
         for quad in quads:
             if self.is_win(quad, "cpu", self.board):
                 self.game_over = True
@@ -301,10 +302,13 @@ class Board:
                 forks.append(quad)
 
             if self.is_fork(quad, "cpu", self.board):
-                return self._draw_shape("o", quad)
+                cpu_forks.append(quad)
 
         if len(blocks) > 0:
             return self._draw_shape("o", choice(blocks))
+
+        if len(cpu_forks) > 0:
+            return self._draw_shape("o", choice(cpu_forks))
 
         if len(forks) > 0:
             return self._draw_shape("o", self.cpu_block_forks(forks))
